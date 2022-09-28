@@ -1,25 +1,17 @@
-# 수 정렬하기 (선택 정렬)
+# 수 정렬하기 3
+
+import sys
+value = sys.stdin.readline
 
 N = int(input())
-array = []
+
+num = [0] * 10001
+
 for _ in range(N):
-    array.append(int(input()))
+    temp = int(input())  # [5,2,3,1]
+    num[temp] += 1
 
-
-def selectionSort(array):
-    for i in range(len(array)-1):
-        lowestNumberIndex = i
-        for j in range(i+1, len(array)):
-            if array[j] < array[lowestNumberIndex]:
-                lowestNumberIndex = j
-
-        if(lowestNumberIndex != i):
-            temp = array[i]
-            array[i] = array[lowestNumberIndex]
-            array[lowestNumberIndex] = temp
-    return array
-
-
-selectionSort(array)
-for i in array:
-    print(i)
+for i in range(10001):
+    if num[i] != 0:
+        for j in range(num[i]):
+            print(i)

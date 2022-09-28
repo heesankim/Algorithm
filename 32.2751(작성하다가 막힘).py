@@ -55,7 +55,7 @@ unsorted_list = [sys.stdin.readline().strip() for _ in range(N)]
 # merge_sort(unsorted_list)
 
 
-def merge_sort(a):
+def merge_sort(array):
     def sort(unsorted_list):
         if len(unsorted_list) <= 1:
             return
@@ -71,26 +71,27 @@ def merge_sort(a):
         i = 0
         j = 0
         k = 0
+        result = []
         while (i < len(left)) and (j < len(right)):
             if left[i] < right[j]:
-                a[k] = left[i]
+                array[k] = left[i]
                 i += 1
                 k += 1
             else:
-                a[k] = right[j]
+                array[k] = right[j]
                 j += 1
                 k += 1
         # 남은 데이터 삽입
         while i < len(left):
-            a[k] = left[i]
+            array[k] = left[i]
             i += 1
             k += 1
         while j < len(right):
-            a[k] = right[j]
+            array[k] = right[j]
             j += 1
             k += 1
-        print(a)
-    sort(a)
+        print(array)
+    sort(array)
 
 
 merge_sort(unsorted_list)

@@ -1,10 +1,8 @@
 
 # 수 정렬하기 (버블 정렬)
-
-N = int(input())
-array = []
-for _ in range(N):
-    array.append(int(input()))
+import sys
+N = int(sys.stdin.readline())
+array = [sys.stdin.readline().strip() for i in range(N)]
 
 
 def bubble_sort(array):
