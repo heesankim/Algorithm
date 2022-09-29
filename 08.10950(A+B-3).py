@@ -1,4 +1,10 @@
 T = int(input())
+
+value = []
 for i in range(T):
     a, b = map(int, input().split(" "))
-    print(a+b)
+    value.append(a+b)
+
+
+for i in value:
+    print(i)
