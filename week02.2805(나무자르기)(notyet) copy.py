@@ -13,6 +13,7 @@
 # 4(나무 갯수) 7(최소로 가지고갈 나무길이)
 # 20 15 10 17
 
+import re
 import sys
 N, M = map(int, sys.stdin.readline().split())
 trees = list(map(int, sys.stdin.readline().split()))
@@ -32,6 +33,7 @@ while start <= end:
         start = mid + 1
     else:
         # 끝점 조정
+        # res = mid # 이런경우 
         end = mid - 1
 
 # 답출력
