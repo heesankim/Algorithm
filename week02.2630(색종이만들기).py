@@ -30,8 +30,7 @@ def solution(x, y, N):
         result.append(0)
     else:
         result.append(1)
-
-
+    
 solution(0, 0, N)
 print(result.count(0))
 print(result.count(1))
