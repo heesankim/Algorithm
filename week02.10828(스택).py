@@ -30,3 +30,4 @@ for _ in range(T):
             print(0)
         else:
             print(1)
+

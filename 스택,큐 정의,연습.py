@@ -20,6 +20,9 @@
 # - 역순 문자열 만들기
 # - 실행 취소(undo)
 
+from queue import Empty
+
+
 data_stack = list()
 
 
@@ -30,6 +33,7 @@ def push(data):
 push(1)  # 1
 push(2)  # 2
 print(data_stack)  # [1, 2]
-for i in range(3,10): # 3,4,5,6,7,8,9 
+for i in range(3, 10):  # 3,4,5,6,7,8,9
     push(i)
-print(data_stack) # [1,2,3,4,5,6,7,8,9]
+print(data_stack)  # [1,2,3,4,5,6,7,8,9]
+
