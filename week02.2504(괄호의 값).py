@@ -15,7 +15,6 @@
 # 만일, 입력이 올바르지 못한 괄호열이라면은 반드시 0을 출력해야 한다.
 
 import sys
-sys.stdin = open('input.txt', 'r')
 
 input = sys.stdin.readline
 

@@ -1,1 +1,1 @@
-T = int(input())
+
