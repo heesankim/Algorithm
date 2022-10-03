@@ -13,9 +13,6 @@ N, K = map(int, input().split())
 for i in range(1, N+1):
     num_list.append(i)
 
-print(num_list) #[1,2,3,4,5,6,7]
-print(answer)
-
 while num_list:
     for i in range(K-1): 
         num_list.append(num_list.popleft())
