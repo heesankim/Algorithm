@@ -1,5 +1,5 @@
 # 해당 문제는 DFS와 BFS의 기본개념을 이해하기 좋은문제이다. DFS는 재귀나 스택으로 구현하는게 보통이고 BFS는 queue로 구현하는게 보통이다.
-#  또한 입력받은 노드의 개수만큼 이차원 리스트로(이차원 리스트의 인덱스:각 노드, 해당인덱스의 값들: 노드들과 연결 여부) False로 초기화한다음
+#  또한 입력받은 노드의 개수만큼 이차원 리스트로(이차원 리스트의 인덱스:각 노드, 해당인덱스의 값들: 노드들과 연결 여부 False로 초기화한다음
 # 만약 연결되어 있다면 True로 바꿔주는 형식으로 구현해도 되고 혹은 정점만 입력 받아서 그 정점만 찾아나가는 방식으로 구현해도 된다.
 
 # 단, 정점만 찾아나가는 방식으로 구현할 경우 낮은 숫자부터 탐색하라고 되어있으니 오름차순 정렬이 필요하다.
@@ -22,15 +22,16 @@ for _ in range(M):
     graph[a][b] = True
     graph[b][a] = True
 
-visited1 = [False] * (N + 1)
-visited2 = [False] * (N + 1)
+dfs_visited = [False] * (N + 1)
+bfs_visited = [False] * (N + 1)
 
 
 def bfs(V):
-    q = deque([V])  # pop메서드의 시간복잡도가 낮은 덱 내장 메서드를 이용한다
+    q = deque([V])  # pop메서드의 시간복잡도가 낮은 덱 내장 메서드를 이용한다.
+    # 리스트로 할 수도 있는데 큐를 쓸 수 있으면 사용하는게 낫다.
     # q: 현재 레벨에 속한 점들
 
-    visited2[V] = True  # 해당 V 값을 방문처리 = 현재 레벨중 하나를 방문함
+    bfs_visited[V] = True  # 해당 V 값을 방문처리 = 현재 레벨중 하나를 방문함
 
     while q:  # q가 빌때까지 돈다.== 이 레벨의 정점들 중에 방문해야되는 점이 있다
 
@@ -38,16 +39,16 @@ def bfs(V):
         print(V, end=" ")  # 해당 값 출력
 
         for i in range(1, N + 1):  # 1부터 N까지 돈다
-            if not visited2[i] and graph[V][i]:  # 만약 해당 i값을 방문하지 않았고 V와 연결이 되어 있다면
+            if not bfs_visited[i] and graph[V][i]:  # 만약 해당 i값을 방문하지 않았고 V와 연결이 되어 있다면
                 q.append(i)  # 그 i 값을 추가
-                visited2[i] = True  # i 값을 방문처리
+                bfs_visited[i] = True  # i 값을 방문처리
 
 
 def dfs(V):
-    visited1[V] = True  # 해당 V값 방문처리
+    dfs_visited[V] = True  # 해당 V값 방문처리
     print(V, end=" ")
     for i in range(1, N + 1):
-        if not visited1[i] and graph[V][i]:  # 만약 i값을 방문하지 않았고 V와 연결이 되어 있다면
+        if not dfs_visited[i] and graph[V][i]:  # 만약 i값을 방문하지 않았고 V와 연결이 되어 있다면
             dfs(i)  # 해당 i 값으로 dfs를 돈다.(더 깊이 탐색)
 
 
