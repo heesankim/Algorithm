@@ -1,30 +1,30 @@
-# 풀지 못했습니다.
+# 시험 떄 풀지 못함
+
 import sys
 input = sys.stdin.readline
 
-# 반드시 오른쪽이나 아래로 이동 , // 0은 더이상 진행을 막는 종착점
-# 한 번 점프를 할 때 , 방향을 바꾸면 안됨
-# 오른쪽 점프, 아래쪽 점프 두 가지 경우만 존재
-
-# 왼쪽모서리에서 오른쪽 모서리로 가야하는 
-# 경로의 갯수를 구해라
-
 n = int(input())
 
-dp = [list(map(int, input().split())) for _ in range(n)]
+scores = []
+dp = []
+for _ in range(n):
+    score = list(map(int, input().split()))
+    scores.append(score)
+    dp.append(list([0]*n))
 
-
-start = dp[0][0]
-sum = 0
-# 오른쪽, 아래를 계속해서 자신의 값만큼 인덱스를 이동시키다가 0을 만나면 경우의수 + 1.
-for i in range(n): 
+# 출발하는 곳을 1로 둔다.
+dp[0][0] = 1 
+# dp 테이블의 인덱스가 의미 하는 건 (0,0) 에서 (i,j) 까지 가는 경로의 수이다.
+# 최종적으로 구하고자 하는건 [n-1][n-1] 인덱스 값.
+for i in range(n):
     for j in range(n):
-        
-        sum = start + dp[i][j] + dp[i][j+dp[i][j]]  # 오른쪽 이동하는 경우
-        dp[i][j] + dp[i+dp[i][j]][j]  # 아래로 이동하는 경우
-
-        
-    
-
-
-
+        # 도착 지점에 도달 하면 반복문을 종료한다.
+        if i == n-1 and j == n-1:
+            break
+        if j + scores[i][j] < n:
+            # 오른쪽 이동하는 경우
+            dp[i][j + scores[i][j]] += dp[i][j]
+            # 아래로 이동하는 경우
+        if i + scores[i][j] < n:
+            dp[i + scores[i][j]][j] += dp[i][j]
+print(dp[n-1][n-1])
