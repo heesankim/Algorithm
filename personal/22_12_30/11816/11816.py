@@ -3,20 +3,11 @@ import sys
 
 input = sys.stdin.readline
 
-n = input()
+x = input()
 
+if '0x' in x:
+    x = int(x,16)
+elif x[0] == '0':
+    x = int (x,8)
+print(x)
 
-if str.startswith('0'):
-    for i in reversed(range(n.length)):
-        int(str[i])
-
-elif str.startswith('0x'):
-
-else:
-    print(int(n))
-
-
-# for i in reversed(range(10)):
-#     print(i)
-
-# 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
