@@ -1,3 +1,11 @@
+
 function solution(n) {
-    return Number(String(n).split("").map(Number).sort((a,b) => b - a).join(""))
+  const newN = n + "";
+  const newArr = newN
+    .split("")
+    .sort()
+    .reverse()
+    .join("");
+
+  return +newArr;
 }
