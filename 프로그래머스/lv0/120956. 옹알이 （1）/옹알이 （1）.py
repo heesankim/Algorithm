@@ -3,14 +3,12 @@ def solution(babbling):
     arr = ["aya", "ye", "woo", "ma"]
     
     for i in babbling:
-        available = 0
-        word = ''
-        for j in i: 
-            word = word + j
-            if word in arr:
-                word = ""
-                available += 1
-        if word.strip() == "" and available > 0:  # 빈문자열이고 한번 이상씩 지워졌다면
-            answer = answer + 1
+        flag = i
+        syllables_count = 0
+        for j in arr: 
+            if flag.count(j) == 1:
+                flag = flag.replace(j," ", 1)
+                syllables_count += 1
+        if flag.strip() == "" and syllables_count == len(arr):
+            answer += 1
     return answer
-
